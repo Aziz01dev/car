@@ -54,24 +54,42 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   CarModels item = listdata[index];
                   return ListTile(
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.network(item.image),
+                    ),
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${item.id}'),
-                        Image.network(item.image,width: 200,),
-                        Text(item.name),
-                        Text('${item.price}'),
-                        Text('${item.speed}'),
-                        Text('${item.year}'),
+                        Text("ID:${item.id}"),
+                        SizedBox(height: 10),
+                        Column(
+                          children: [
+                            Text('Name: ${item.name}'),
+                            Text('Price: ${item.price}'),
+                          ],
+                        ),
+                        SizedBox(width: 30),
+                        Column(
+                          children: [
+                            Text('Speed: ${item.speed}'),
+                            Text('Year: ${item.year}'),
+                          ],
+                        ),
+                        SizedBox(height: 40,),
                       ],
                     ),
-                    trailing:Row(
+                    trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                         IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.delete, color: Colors.red),
+                        ),
+                        IconButton(onPressed: () {},
+                         icon: Icon(Icons.edit, color: Colors.orange,)),
                       ],
-                    )
+                    ),
                   );
                 },
               ),
